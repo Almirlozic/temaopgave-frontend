@@ -1,5 +1,6 @@
 ---
 import coreValues from "../data/coreValues.json";
+import "../styles/tokens.css";
 ---
 
 <section class="core-values">
@@ -14,7 +15,6 @@ import coreValues from "../data/coreValues.json";
           <h3>{value.title}</h3>
           <p>{value.description}</p>
           <a href={value.link.url}>{value.link.text}</a>
-          <h1>hej</h1>
         </div>
       ))
     }
@@ -27,6 +27,12 @@ import coreValues from "../data/coreValues.json";
 
 <style>
   .core-values {
-    background-color: var(--color-neutrals-400);
+    background-color: var(--color-neutrals-50);
+  }
+  .values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: var(--color-surface-primary);
+    gap: var(--card-gap);
   }
 </style>
