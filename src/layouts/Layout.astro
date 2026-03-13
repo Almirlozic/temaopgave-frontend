@@ -16,12 +16,38 @@ import Header from "../components/Header.astro";
   </head>
   <body>
     <Header />
-    <slot />
+    <main>
+      <slot />
+    </main>
+    <footer>footer</footer>
   </body>
 </html>
 
 <style>
   @view-transition {
     navigation: auto;
+  }
+  @layer global {
+    body {
+      display: grid;
+      grid-template-columns:
+        [full-start] 1fr [content] minmax(0, 1200px)
+        1fr [full-end];
+    }
+
+    header,
+    footer,
+    main,
+    section {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full;
+      > * {
+        margin-top: 2rem;
+      }
+      > :not(&) {
+        grid-column: content;
+      }
+    }
   }
 </style>
