@@ -15,8 +15,10 @@ import CEOImage from "@assets/images/ceo.webp";
     <a href="#0">Book a Meeting</a>
     <a href="#0">Learn More</a>
   </div>
-  <Image src={CEOImage} alt="CEO" />
-
+  <div class="CEO-image">
+    <Image src={CEOImage} alt="CEO" />
+    <div> <span class="background-grid">0</span></div>
+  </div>
   <Services />
 </section>
 
@@ -24,8 +26,28 @@ import CEOImage from "@assets/images/ceo.webp";
   /* Styles her */
   @layer components {
     .hero {
+      grid-column: 2/3;
       background-color: #f3f4f6;
       padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .CEO-image{
+      grid-column: 2/ -1;
+    }
+    .background-grid{
+      grid-column: 1/2;
+      position: relative;
+      &::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+        
+        background:
+          conic-gradient(from 180deg at 1px 1px, red 75%, var(--color-blue-700-transparent) 0) -1px -1px / 60px
+            60px,
+          transparent;
     }
   }
 </style>
