@@ -1,5 +1,6 @@
 ---
 import financialProjections from "../data/financialProjections.json";
+import DynamicImage from "../components/helpers/DynamicIcon.astro";
 ---
 
 <section class="carousel-section reveal">
@@ -14,7 +15,7 @@ import financialProjections from "../data/financialProjections.json";
       {
         financialProjections.values.map((item) => (
           <article class="card">
-            <div class="icon">{item.icon}</div>
+            <DynamicImage name={item.icon} />
             <h3>{item.title}</h3>
             <p>{item.description}</p>
             {/* <a href={item.link.url}>{item.link.text}</a> */}
