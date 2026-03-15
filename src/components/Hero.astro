@@ -74,12 +74,11 @@ import CEOImage from "@assets/images/ceo.webp";
       font-weight: 700;
     }
 
-      .hero-content-inner p {
-        font-size: 18px;
-        line-height: 1.6;
-        max-width: 52ch;
-        color: var(--color-on-ui-primary-muted);
-      }
+    .hero-content-inner p {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 52ch;
+      color: var(--color-on-ui-primary-muted);
     }
 
     .hero-highlight {
@@ -93,9 +92,15 @@ import CEOImage from "@assets/images/ceo.webp";
       position: absolute;
       bottom: 0;
       left: calc(-100vw + 100%);
-      width: 100vw;
+      width: 90vw;
       height: 0.18em;
-      background: var(--color-surface-highlight);
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        transparent 60%,
+        var(--color-surface-highlight) 90%,
+        var(--color-surface-highlight) 100%
+      );
       border-radius: 999px;
       z-index: -1;
     }
@@ -114,6 +119,17 @@ import CEOImage from "@assets/images/ceo.webp";
       border-radius: 999px;
       text-decoration: none;
       width: fit-content;
+      transition: transform 0.5s ease;
+    }
+
+    .hero-content-inner a:first-of-type:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 8px var(--color-neutrals-50);
+    }
+
+    .hero-content-inner a:last-of-type:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 8px var(--color-yellow-600);
     }
 
     .hero-content-inner a:first-of-type {
@@ -152,8 +168,8 @@ import CEOImage from "@assets/images/ceo.webp";
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 75%;
-      height: 85%;
+      width: 60%;
+      height: 60%;
       background:
         conic-gradient(
             from 180deg at 1px 1px,
@@ -166,14 +182,14 @@ import CEOImage from "@assets/images/ceo.webp";
       mask-image: radial-gradient(
         circle at bottom right,
         black 0%,
-        black 40%,
-        transparent 100%
+        black 20%,
+        transparent 80%
       );
       -webkit-mask-image: radial-gradient(
         circle at bottom right,
         black 0%,
-        black 40%,
-        transparent 100%
+        black 20%,
+        transparent 80%
       );
     }
 
