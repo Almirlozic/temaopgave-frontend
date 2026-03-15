@@ -42,7 +42,7 @@ import Header from "../components/Header.astro";
       display: grid;
       grid-template-columns: subgrid;
       grid-column: full;
-      > * {
+      > * + * {
         margin-top: 2rem;
       }
       > :not(&) {
