@@ -36,11 +36,17 @@
   --card-margin-top: 34px;
   --card-gap: 36px;
   --btn-padding: 15px 34px;
+  --form-padding: 10px 10px;
 
   /* ==== Typography ==== */
   --p-lineheight: 1.6;
+  --light-font: 200;
+  --normal-font: 400;
+  --bold-font: 600;
+  --bolder-font: 800;
 
   /* ==== Border Radii ==== */
   --card-border: 20px;
   --btn-border: 42px;
+  --popover-border: 20px;
 }
