@@ -67,6 +67,39 @@ import CEOImage from "@assets/images/ceo.webp";
       z-index: 1;
     }
 
+    .hero-content-inner h1 {
+      font-size: 50px;
+      line-height: 1.05;
+      max-width: 14ch;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+
+    .hero-content-inner p {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 52ch;
+      color: var(--color-on-ui-primary-muted);
+    }
+
+    .hero-highlight {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.15em;
+    }
+
+    .hero-highlight::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: calc(-100vw + 100%);
+      width: 100vw;
+      height: 0.18em;
+      background: var(--color-surface-highlight);
+      border-radius: 999px;
+      z-index: -1;
+    }
+
     .hero-actions {
       display: flex;
       gap: 2rem;
