@@ -45,6 +45,16 @@
   --bold-font: 600;
   --bolder-font: 800;
 
+  /* font size */
+  --step--2: clamp(0.7813rem, 0.7719rem + 0.0375vw, 0.8rem);
+  --step--1: clamp(0.9375rem, 0.9063rem + 0.125vw, 1rem);
+  --step-0: clamp(1.125rem, 1.0625rem + 0.25vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.2438rem + 0.425vw, 1.5625rem);
+  --step-2: clamp(1.62rem, 1.4534rem + 0.6663vw, 1.9531rem);
+  --step-3: clamp(1.944rem, 1.6953rem + 0.9948vw, 2.4414rem);
+  --step-4: clamp(2.3328rem, 1.9733rem + 1.4379vw, 3.0518rem);
+  --step-5: clamp(2.7994rem, 2.2917rem + 2.0307vw, 3.8147rem);
+
   /* ==== Border Radii ==== */
   --card-border: 20px;
   --btn-border: 42px;
