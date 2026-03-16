@@ -31,7 +31,11 @@ import Header from "../components/Header.astro";
     body {
       display: grid;
       grid-template-columns:
-        [full-start] 1fr [content] minmax(0, 1200px)
+        [full-start] 1fr [content-start] minmax(0, 600px) [img-start] minmax(
+          0,
+          600px
+        )
+        [content-end]
         1fr [full-end];
     }
 
