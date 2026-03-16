@@ -1,0 +1,103 @@
+---
+import ExpectImage from "@data/images/WhatToExpect.jpg";
+import { Image } from "astro:assets";
+import ServiceHeader from "@components/ServiceHeader.astro";
+---
+
+<section class="Expect-main">
+  <div class="expectImage">
+    <div class="expectImage-frame">
+      <Image
+        src={ExpectImage}
+        alt="A picture of guys being in a conversation"
+      />
+    </div>
+  </div>
+  <div class="content">
+    <ServiceHeader
+      eyebrow="We'll work with you"
+      title="What to expect"
+      lede="Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals."
+    />
+
+    <ul>
+      <li>
+        <!-- <CheckMark class="check" /> -->
+        Collaborate to build actionable strategies that drive sustainable growth and
+        deliver tangible outcomes.
+      </li>
+
+      <li>
+        <!-- <CheckMark class="check" /> -->
+        Identify opportunities to optimize processes and implement impactful solutions
+        with measurable results.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .Expect-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-block: 5rem;
+  }
+
+  .expectImage {
+    position: relative;
+  }
+
+  .expectImage-frame {
+    overflow: hidden;
+    border-radius: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .expectImage-frame :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .expectImage::before {
+    content: "";
+    position: absolute;
+    top: -1.5rem;
+    left: -1.5rem;
+    width: 12rem;
+    height: 12rem;
+    background: var(--color-green-600);
+    border-radius: 2rem;
+    z-index: 0;
+  }
+
+  .content {
+    padding-inline: 2rem;
+    gap: 2rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li::before {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    background: var(--checkmark-icon) 50% 50% / contain no-repeat;
+  }
+
+  li {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-block: 1rem;
+    margin-top: 0;
+  }
+</style>

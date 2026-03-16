@@ -1,0 +1,32 @@
+---
+const { eyebrow, title, lede } = Astro.props;
+const hasActions = Astro.slots.has("actions");
+---
+
+{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+<h2>{title}</h2>
+{lede && <p class="lede">{lede}</p>}
+
+<style>
+  .eyebrow {
+    margin: 0 0 0.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #374151;
+  }
+  h2 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+    color: #111827;
+  }
+
+  .lede {
+    max-width: 700px;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #4b5563;
+  }
+</style>
