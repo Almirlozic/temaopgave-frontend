@@ -60,11 +60,19 @@
   --btn-border: 42px;
   --popover-border: 20px;
 
+  /* space */
+  --space-3xs: clamp(0.3125rem, 0.1847rem + 0.5682vw, 0.625rem);
+  --space-2xs: clamp(0.5625rem, 0.2813rem + 1.25vw, 1.25rem);
+  --space-xs: clamp(0.875rem, 0.4659rem + 1.8182vw, 1.875rem);
+  --space-s: clamp(1.125rem, 0.5625rem + 2.5vw, 2.5rem);
+  --space-m: clamp(1.6875rem, 0.8438rem + 3.75vw, 3.75rem);
+  --space-l: clamp(2.25rem, 1.125rem + 5vw, 5rem);
+  --space-xl: clamp(3.375rem, 1.6875rem + 7.5vw, 7.5rem);
+  --space-2xl: clamp(4.5rem, 2.25rem + 10vw, 10rem);
+  --space-3xl: clamp(6.75rem, 3.375rem + 15vw, 15rem);
 
   /* svg'er */
 
-
   /* checkmark */
   --checkmark-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='23' viewBox='0 0 23 23' fill='none'%3E%3Ccircle cx='11.5' cy='11.5' r='10.5' stroke='%234BB84B' stroke-width='2'/%3E%3Cpath d='M7 11.5l3 3 6-6' stroke='%234BB84B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-
 }
