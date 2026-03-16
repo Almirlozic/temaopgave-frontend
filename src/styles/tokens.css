@@ -42,7 +42,7 @@
   --p-lineheight: 1.6;
   --light-font: 200;
   --normal-font: 400;
-  --bold-font: 600;
+  --bold-font: 500;
   --bolder-font: 800;
 
   /* font size */
@@ -59,4 +59,28 @@
   --card-border: 20px;
   --btn-border: 42px;
   --popover-border: 20px;
+
+  /* spacing  */
+  --space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+  --space-2xs: clamp(0.5625rem, 0.5313rem + 0.125vw, 0.625rem);
+  --space-xs: clamp(0.875rem, 0.8438rem + 0.125vw, 0.9375rem);
+  --space-s: clamp(1.125rem, 1.0625rem + 0.25vw, 1.25rem);
+  --space-m: clamp(1.6875rem, 1.5938rem + 0.375vw, 1.875rem);
+  --space-l: clamp(2.25rem, 2.125rem + 0.5vw, 2.5rem);
+  --space-xl: clamp(3.375rem, 3.1875rem + 0.75vw, 3.75rem);
+  --space-2xl: clamp(4.5rem, 4.25rem + 1vw, 5rem);
+  --space-3xl: clamp(6.75rem, 6.375rem + 1.5vw, 7.5rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.3125rem, 0.1563rem + 0.625vw, 0.625rem);
+  --space-2xs-xs: clamp(0.5625rem, 0.375rem + 0.75vw, 0.9375rem);
+  --space-xs-s: clamp(0.875rem, 0.6875rem + 0.75vw, 1.25rem);
+  --space-s-m: clamp(1.125rem, 0.75rem + 1.5vw, 1.875rem);
+  --space-m-l: clamp(1.6875rem, 1.2813rem + 1.625vw, 2.5rem);
+  --space-l-xl: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  --space-xl-2xl: clamp(3.375rem, 2.5625rem + 3.25vw, 5rem);
+  --space-2xl-3xl: clamp(5rem, 3rem + 6vw, 7.5rem);
+
+  /* Custom pairs */
+  --space-s-l: clamp(1.125rem, 0.4375rem + 2.75vw, 2.5rem);
 }
