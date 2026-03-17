@@ -1,8 +1,144 @@
 ---
+import CheckmarkComponent from "@components/checkmarkComponent.astro";
 import CoreValues from "@components/coreValues.astro";
+import Herotext from "@components/Herotext.astro";
+import ServiceHeader from "@components/ServiceHeader.astro";
 import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+import aboutImage from "@data/images/about.jpg";
 ---
 
 <Layout>
-  <CoreValues />
+  <Herotext
+    eyebrow="About"
+    title="Igniting Innovation"
+    text="Our strength lies in the collaboration between our talented teams and esteemed clients. We cultivate a workplace that champions innovation, promotes peak performance, and guarantees client satisfaction."
+  />
+
+  <!-- Grid sektion -->
+  <section class="vision-grid">
+    <div class="text-column">
+      <ServiceHeader
+        eyebrow="OUR VISION"
+        title="Turn your ideas into reality."
+        lede="Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps."
+      />
+      <CheckmarkComponent
+        firstli="Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day."
+        secondli="Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital."
+      />
+    </div>
+
+    <div class="image-column">
+      <Image src={aboutImage} alt="billede af tre personer der studere" />
+    </div>
+  </section>
+  <section class="flex">
+    <div class="counter">
+      <h3 data-target="1128">0</h3>
+      <p>Successful Work</p>
+    </div>
+    <div class="counter">
+      <h3 data-target="908">0</h3>
+      <p>Team member</p>
+    </div>
+    <div class="counter">
+      <h3 data-target="258">0</h3>
+      <p>Happy Customers</p>
+    </div>
+    <div class="counter">
+      <h3 data-target="564">0</h3>
+      <p>Creative Idea</p>
+    </div>
+  </section>
+  <CoreValues
+    backgroundColor="var(--color-neutrals-50)"
+    textColor="var(--color-neutrals-900)"
+  />
 </Layout>
+
+<style>
+  .vision-grid {
+    display: grid;
+    gap: 5rem;
+    align-items: start;
+    margin-block: 6rem;
+  }
+  .image-column {
+    grid-column: content;
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+    &::after {
+      content: "";
+      position: absolute;
+      top: -2rem;
+      left: 25rem;
+      width: 8rem;
+      height: 8rem;
+      background: var(--color-green-400);
+      border-radius: 20px;
+      z-index: -1;
+    }
+  }
+  .flex {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5rem;
+    animation: fadein 4s ease-in;
+    h3 {
+      font-size: var(--step-3);
+      font-weight: var(--bold-font);
+    }
+    p {
+      font-size: var(--step--2);
+      color: var(--color-neutrals-700);
+    }
+  }
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .flex .counter h3::after {
+    content: "+";
+    margin-left: 0.25rem;
+    color: inherit;
+    font-weight: var(--bold-font);
+  }
+</style>
+
+<script type="module">
+  const flexSection = document.querySelector(".flex");
+  const counters = document.querySelectorAll(".flex .counter h3");
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        flexSection.classList.add("visible"); // fade + slide
+        counters.forEach((counter) => {
+          const target = +counter.getAttribute("data-target");
+          let count = 0;
+          const increment = Math.ceil(target / 250); // hastighed
+          const updateCount = () => {
+            count += increment;
+            if (count < target) {
+              counter.textContent = count;
+              requestAnimationFrame(updateCount);
+            } else {
+              counter.textContent = target; // sikre endelig værdi
+            }
+          };
+          requestAnimationFrame(updateCount);
+        });
+        observer.unobserve(flexSection); // kun én gang
+      }
+    },
+    { threshold: 0.5 },
+  );
+
+  observer.observe(flexSection);
+</script>
