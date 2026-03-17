@@ -2,6 +2,7 @@
 import ExpectImage from "@data/images/WhatToExpect.jpg";
 import { Image } from "astro:assets";
 import ServiceHeader from "@components/ServiceHeader.astro";
+import CheckMark from "@components/checkmarkComponent.astro";
 ---
 
 <section class="Expect-main">
@@ -20,19 +21,7 @@ import ServiceHeader from "@components/ServiceHeader.astro";
       lede="Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals."
     />
 
-    <ul>
-      <li>
-        <!-- <CheckMark class="check" /> -->
-        Collaborate to build actionable strategies that drive sustainable growth and
-        deliver tangible outcomes.
-      </li>
-
-      <li>
-        <!-- <CheckMark class="check" /> -->
-        Identify opportunities to optimize processes and implement impactful solutions
-        with measurable results.
-      </li>
-    </ul>
+    <CheckMark />
   </div>
 </section>
 
@@ -78,7 +67,7 @@ import ServiceHeader from "@components/ServiceHeader.astro";
     gap: 2rem;
   }
 
-  ul {
+  /* ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -99,5 +88,5 @@ import ServiceHeader from "@components/ServiceHeader.astro";
     align-items: center;
     padding-block: 1rem;
     margin-top: 0;
-  }
+  } */
 </style>
