@@ -21,11 +21,16 @@ import FacebookIcon from "@icons/facebook.svg";
       Employees.map((employee) => (
         <article class="employee-card">
           <div class="employee-card__image-wrapper">
-            <img
-              src={employee.img}
-              alt={employee.name}
-              class="employee-card__image"
-            />
+            <a
+              href={`/${employee.id}`}
+              aria-label={`Read more about ${employee.name}`}
+            >
+              <img
+                src={employee.img}
+                alt={employee.name}
+                class="employee-card__image"
+              />
+            </a>
           </div>
 
           <div class="employee-card__content">
@@ -73,6 +78,7 @@ import FacebookIcon from "@icons/facebook.svg";
     background: #fff;
     border-radius: 1rem;
     overflow: hidden;
+    position: relative;
     transition:
       transform 0.3s ease,
       box-shadow 0.3s ease;
@@ -85,6 +91,12 @@ import FacebookIcon from "@icons/facebook.svg";
 
   .employee-card__image-wrapper {
     aspect-ratio: 4 / 3;
+  }
+
+  .employee-card__image-wrapper a {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .employee-card__image {
@@ -125,6 +137,12 @@ import FacebookIcon from "@icons/facebook.svg";
 
     text-align: center;
     max-width: 32ch;
+  }
+
+  .icons,
+  .icons a {
+    position: relative;
+    z-index: 2;
   }
 
   .icons {

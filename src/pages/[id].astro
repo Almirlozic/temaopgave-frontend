@@ -1,0 +1,18 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Employees from "@data/employees.json";
+import ID from "../components/Id.astro";
+
+export function getStaticPaths() {
+  return Employees.map((employee) => ({
+    params: { id: String(employee.id) },
+    props: { employee },
+  }));
+}
+
+const { employee } = Astro.props;
+---
+
+<Layout>
+  <ID employee={employee} />
+</Layout>
