@@ -2,15 +2,18 @@
 const { backgroundColor, textColor } = Astro.props;
 import coreValues from "../data/coreValues.json";
 import "../styles/tokens.css";
-import DynamicImage from "./helpers/DynamicImage.astro";
+import DynamicImage from "../components/helpers/DynamicIcon.astro";
+import ServiceHeader from "./ServiceHeader.astro";
 ---
 
 <section style={`background-color: ${backgroundColor}; color: ${textColor};`}>
   <div class="header">
     <div class="text">
-      <p>{coreValues.eyebrow}</p>
-      <h1>{coreValues.title}</h1>
-      <p>{coreValues.subtitle}</p>
+      <ServiceHeader
+        eyebrow="Growing with our Clients"
+        title="Our core values & principles"
+        lede="Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps."
+      />
     </div>
     <a
       class="get-in-touch"
@@ -24,6 +27,7 @@ import DynamicImage from "./helpers/DynamicImage.astro";
     {
       coreValues.values.map((value) => (
         <div class="card">
+          <DynamicImage name={value.icon} />
           <h3>{value.title}</h3>
           <p>{value.description}</p>
           <a class="read-more-btn" href={value.link.url}>
@@ -73,6 +77,15 @@ import DynamicImage from "./helpers/DynamicImage.astro";
       display: flex;
       flex-direction: column;
       color: var(--color-neutrals-900);
+      h3 {
+        padding-block: 15px;
+        font-size: var(--step-0);
+        font-weight: var(--bold-font);
+      }
+      p {
+        padding-block: 10px;
+        color: var(--color-neutrals-700);
+      }
     }
     .get-in-touch {
       text-decoration: none;
