@@ -4,11 +4,16 @@ import WhatToExpect from "@components/WhatToExpect.astro";
 import Hero from "@components/Hero.astro";
 import Carrousel from "@components/Carrousel.astro";
 import Contact from "@components/Contact.astro";
+import CoreValues from "@components/coreValues.astro";
 ---
 
 <Layout>
   <Hero />
   <WhatToExpect />
   <Carrousel />
+  <CoreValues
+    backgroundColor="var(--color-neutrals-900)"
+    textColor="var(--color-neutrals-50)"
+  />
   <Contact />
 </Layout>
