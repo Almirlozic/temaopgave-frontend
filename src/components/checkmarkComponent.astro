@@ -1,0 +1,38 @@
+<ul>
+  <li>
+    <!-- <CheckMark class="check" /> -->
+    Collaborate to build actionable strategies that drive sustainable growth and deliver
+    tangible outcomes.
+  </li>
+
+  <li>
+    <!-- <CheckMark class="check" /> -->
+    Identify opportunities to optimize processes and implement impactful solutions
+    with measurable results.
+  </li>
+</ul>
+
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li::before {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    background: var(--checkmark-icon) 50% 50% / contain no-repeat;
+  }
+
+  li {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-block: 1rem;
+    margin-top: 0;
+  }
+</style>
