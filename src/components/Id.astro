@@ -1,7 +1,225 @@
 ---
 const { employee } = Astro.props;
+import DynamicIcon from "@helpers/DynamicIcon.astro";
+import DynamicImage from "@helpers/DynamicImage.astro";
 ---
 
-<h1>{employee.name}</h1>
-<p>{employee.title}</p>
-<p>{employee.description}</p>
+<section class="employee-detail">
+  <div class="employee-detail__media">
+    <div class="employee-detail__image-wrap">
+      <div class="employee-detail__shape"></div>
+      <DynamicImage
+        imagePath={employee.img}
+        altText={employee.name}
+        class="employee-detail__image"
+        style={`view-transition-name: img-${employee.slug};`}
+      />
+    </div>
+
+    {
+      employee.social_links?.length > 0 && (
+        <div
+          class="employee-detail__socials"
+          aria-label={`${employee.name} social links`}
+        >
+          {employee.social_links.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.platform}
+            >
+              <DynamicIcon
+                name={link.icon}
+                class="employee-detail__social-icon"
+              />
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+
+  <div class="employee-detail__content">
+    <header class="employee-detail__intro">
+      <h1>{employee.name}</h1>
+      <p class="employee-detail__title">
+        {employee.title}
+      </p>
+      <p class="employee-detail__description">{employee.description_long}</p>
+    </header>
+
+    <section class="employee-detail__experience">
+      <h2>Past experience</h2>
+      <p>{employee.past_experience}</p>
+    </section>
+  </div>
+</section>
+
+<style>
+  .employee-detail {
+    display: grid;
+    grid-template-columns: minmax(280px, 500px) minmax(320px, 1fr);
+    gap: 6rem;
+    align-items: start;
+    padding: 4rem 0 5rem;
+  }
+
+  .employee-detail__media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .employee-detail__image-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .employee-detail__shape {
+    position: absolute;
+    top: -2.75rem;
+    left: -2rem;
+    width: 220px;
+    height: 170px;
+    border-radius: 1.5rem;
+    background: #99db96;
+    z-index: 0;
+  }
+
+  .employee-detail__image,
+  .employee-detail__image-wrap :global(img) {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1.05;
+    object-fit: cover;
+    border-radius: 1.5rem;
+  }
+
+  .employee-detail__socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .employee-detail__socials a {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    background: #000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    transition:
+      transform 180ms ease,
+      opacity 180ms ease;
+  }
+
+  .employee-detail__socials a:hover {
+    transform: translateY(-2px);
+    opacity: 0.88;
+  }
+
+  .employee-detail__social-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    display: block;
+  }
+
+  .employee-detail__content {
+    padding-top: 1.75rem;
+  }
+
+  .employee-detail__intro {
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.75rem;
+    border-bottom: 1px solid #d4d4d4;
+  }
+
+  .employee-detail h1,
+  .employee-detail h2 {
+    margin: 0;
+    color: #0b1020;
+    line-height: 1.05;
+  }
+
+  .employee-detail h1 {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+  }
+
+  .employee-detail h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  .employee-detail__title {
+    margin: 0 0 2rem;
+    font-size: 1.7rem;
+    line-height: 1.2;
+    color: #5c6470;
+  }
+
+  .employee-detail__description,
+  .employee-detail__experience p {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #5b6270;
+    max-width: 62ch;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 980px) {
+    .employee-detail {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .employee-detail__content {
+      padding-top: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .employee-detail {
+      padding: 2.5rem 0 4rem;
+      gap: 2.5rem;
+    }
+
+    .employee-detail__shape {
+      width: 140px;
+      height: 120px;
+      top: -1rem;
+      left: -1rem;
+    }
+
+    .employee-detail h1 {
+      font-size: 2.25rem;
+    }
+
+    .employee-detail h2 {
+      font-size: 1.9rem;
+    }
+
+    .employee-detail__title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .employee-detail__description,
+    .employee-detail__experience p {
+      font-size: 1rem;
+    }
+  }
+</style>
