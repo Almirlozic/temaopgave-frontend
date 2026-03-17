@@ -1,18 +1,14 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import CaseStudyArticle from "@components/CaseStudyArticle.astro";
-import Herotext from "@components/Herotext.astro";
+const { eyebrow, title, text } = Astro.props;
 ---
 
-<Layout>
-  <!-- Hero Banner -->
-  <Herotext
-    eyebrow="CASE STUDIES"
-    title="Taxes & Efficiency"
-    text="Our achievements reflect the close collaboration between our expert teams and our esteemed clientele. We cultivate a workplace that champions peak performance and guarantees client satisfaction."
-  />
-  <CaseStudyArticle />
-</Layout>
+<section class="banner">
+  <div>
+    <span>{eyebrow}</span>
+    <h1>{title}</h1>
+    <p>{text}</p>
+  </div>
+</section>
 
 <style>
   .banner {
@@ -35,6 +31,17 @@ import Herotext from "@components/Herotext.astro";
       h1 {
         font-size: var(--step-4);
         font-weight: var(--bold-font);
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          right: 24%;
+          top: 80%;
+          width: 100vw;
+          height: 7px;
+          background: var(--color-yellow-500);
+          background-clip: content-box;
+        }
       }
       p {
         font-size: var(--step--1);
