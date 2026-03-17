@@ -5,14 +5,30 @@ import DynamicImage from "@helpers/DynamicImage.astro";
 import InstagramIcon from "@icons/instagram.svg";
 import FacebookIcon from "@icons/facebook.svg";
 import ServiceHeader from "@components/ServiceHeader.astro";
+import HeroText from "@components/Herotext.astro";
 ---
 
+<section class="hero-full">
+  <HeroText
+    eyebrow="TEAM"
+    title="The consultors"
+    text="Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction."
+  />
+</section>
 <section class="meet-the-team">
   <div class="meet-the-team__intro">
-    <ServiceHeader
-      title="Meet Our Great Team"
-      lede="Welcome to our amazing team! We are a group of passionate individuals dedicated to excellence and innovation. Each member brings unique skills and experiences, working together to achieve our goals. Join us as we embark on exciting projects and create lasting impacts."
-    />
+    <div class="meet-the-team__intro-inner">
+      <div class="meet-the-team__intro-copy">
+        <ServiceHeader
+          title="Meet Our Great Team"
+          lede="Welcome to our amazing team! We are a group of passionate individuals dedicated to excellence and innovation. Each member brings unique skills and experiences, working together to achieve our goals. Join us as we embark on exciting projects and create lasting impacts."
+        />
+      </div>
+
+      <div class="cta">
+        <button class="cta-button">Get in touch</button>
+      </div>
+    </div>
   </div>
 
   <div class="meet-the-team__grid-wrapper">
@@ -22,7 +38,7 @@ import ServiceHeader from "@components/ServiceHeader.astro";
           <article class="employee-card">
             <div class="employee-card__image-wrapper">
               <a
-                href={`/${employee.id}`}
+                href={`/${employee.slug}`}
                 aria-label={`Read more about ${employee.name}`}
               >
                 <DynamicImage
@@ -55,6 +71,33 @@ import ServiceHeader from "@components/ServiceHeader.astro";
 </section>
 
 <style>
+  .hero-full {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: full;
+    width: 100%;
+    margin: 2rem;
+  }
+
+  .hero-full > :global(*) {
+    grid-column: full;
+    width: 100%;
+    max-width: none !important;
+    margin-inline: 0 !important;
+    text-align: left !important;
+  }
+
+  .hero-full :global(h1),
+  .hero-full :global(h2),
+  .hero-full :global(h3),
+  .hero-full :global(p),
+  .hero-full :global(.eyebrow),
+  .hero-full :global(.title),
+  .hero-full :global(.text) {
+    text-align: left !important;
+    margin-inline: 0 !important;
+    max-width: none !important;
+  }
   .meet-the-team {
     display: grid;
     grid-template-columns: subgrid;
@@ -63,7 +106,52 @@ import ServiceHeader from "@components/ServiceHeader.astro";
 
   .meet-the-team__intro {
     grid-column: content;
-    max-width: 60ch;
+    width: 100%;
+    max-width: none;
+  }
+
+  .meet-the-team__intro-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 60ch) auto;
+    gap: 1.5rem;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .meet-the-team__intro-copy {
+    grid-column: 1;
+    justify-self: start;
+    min-width: 0;
+  }
+
+  .meet-the-team__intro-copy :global(.service-header) {
+    width: 100%;
+  }
+
+  .cta {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-self: end;
+    align-self: end;
+  }
+
+  .cta-button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
   }
 
   .meet-the-team__grid-wrapper {
@@ -82,7 +170,30 @@ import ServiceHeader from "@components/ServiceHeader.astro";
     min-width: 0;
   }
 
-  @container team-grid (max-width: 900px) {
+  @media (max-width: 900px) {
+    .meet-the-team__intro-inner {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .meet-the-team__intro-copy {
+      grid-column: 1;
+      justify-self: start;
+      width: 100%;
+    }
+
+    .cta {
+      grid-column: 1;
+      justify-self: start;
+      align-self: start;
+      width: 100%;
+      margin-top: 0.25rem;
+    }
+
+    .cta-button {
+      align-self: flex-start;
+    }
+
     .meet-the-team__grid {
       grid-template-columns: repeat(2, minmax(0, 340px));
       justify-content: start;
@@ -90,10 +201,10 @@ import ServiceHeader from "@components/ServiceHeader.astro";
     }
   }
 
-  section {
+  .meet-the-team {
     margin: 2rem;
   }
-  @container team-grid (max-width: 600px) {
+  @media (max-width: 600px) {
     .meet-the-team {
       gap: 2rem;
     }
@@ -102,6 +213,32 @@ import ServiceHeader from "@components/ServiceHeader.astro";
       max-width: 100%;
       padding-inline: 1rem;
       text-align: center;
+    }
+
+    .meet-the-team__intro-inner {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .meet-the-team__intro-copy {
+      grid-column: 1;
+      justify-self: center;
+      width: 100%;
+    }
+
+    .cta {
+      grid-column: 1;
+      justify-self: center;
+      align-self: start;
+      align-items: center;
+      width: 100%;
+      margin-top: 0.25rem;
+    }
+
+    .cta-button {
+      align-self: center;
     }
 
     .meet-the-team__intro :global(.service-header) {
@@ -123,6 +260,7 @@ import ServiceHeader from "@components/ServiceHeader.astro";
     .meet-the-team__grid {
       grid-template-columns: minmax(0, 320px);
       padding-inline: 1rem;
+      justify-content: center;
     }
   }
 
@@ -176,7 +314,8 @@ import ServiceHeader from "@components/ServiceHeader.astro";
   .employee-card__title {
     position: relative;
     z-index: 2;
-    margin-left: auto;
+    margin-inline: auto;
+    text-align: center;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
