@@ -8,9 +8,17 @@ interface Props {
   class?: string;
   width?: number;
   height?: number;
+  style?: string;
 }
 
-const { imagePath, altText, class: className, width, height } = Astro.props;
+const {
+  imagePath,
+  altText,
+  class: className,
+  width,
+  height,
+  style,
+} = Astro.props;
 
 // Use import.meta.glob to dynamically import images from the data/images folder
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -29,6 +37,8 @@ if (!images[imagePath]) {
   src={images[imagePath]()}
   alt={altText}
   class={className}
-  width={width}
-  height={height}
+  style={style}
+  loading="lazy"
+  sizes="100vw"
+  fit="cover"
 />
