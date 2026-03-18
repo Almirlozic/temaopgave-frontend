@@ -21,7 +21,10 @@ import CheckMark from "@components/checkmarkComponent.astro";
       lede="Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals."
     />
 
-    <CheckMark />
+     <CheckMark
+        firstli="Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day."
+        secondli="Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital."
+      />
   </div>
 </section>
 
@@ -89,4 +92,26 @@ import CheckMark from "@components/checkmarkComponent.astro";
     padding-block: 1rem;
     margin-top: 0;
   } */
+
+  @media (max-width: 1180px) {
+    .Expect-main {
+      grid-template-columns: 1fr;
+      margin-block: 3rem;
+      gap: 2rem;
+    }
+
+    .expectImage::before {
+      width: 8rem;
+      height: 8rem;
+      top: -1rem;
+      left: -1rem;
+    }
+
+    .content {
+      padding-inline: 1rem;
+      text-align: center;
+      max-width: 50rem;
+      margin: 0 auto;
+    }
+  }
 </style>
