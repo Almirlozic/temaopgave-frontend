@@ -38,11 +38,12 @@ import DynamicImage from "../components/helpers/DynamicIcon.astro";
       grid-template-columns: subgrid;
       grid-column: full;
       > * {
-        grid-column: content;
+        grid-column: content-start / full-end;
       }
     }
 
     .carousel-header {
+      grid-column: content;
       margin: 0 auto 2.5rem;
     }
 
@@ -70,18 +71,16 @@ import DynamicImage from "../components/helpers/DynamicIcon.astro";
     }
 
     .carousel-window {
-      /* max-width: 1200px; */
-      margin: 0 auto;
-      overflow: visible;
+      grid-column: content-start / full-end;
     }
 
     .carousel-track {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 1.5rem;
     }
 
     .card {
-      flex: 0 0 calc((100% - 4.5rem) / 4);
       background: #e5e7eb;
       border-radius: 1.25rem;
       padding: 1.5rem;
@@ -92,7 +91,7 @@ import DynamicImage from "../components/helpers/DynamicIcon.astro";
     }
 
     .card:last-child {
-      flex-basis: calc(((100% - 4.5rem) / 4) + ((100vw - 1200px) / 2));
+      grid-column: 4 / -1;
     }
 
     .icon {
@@ -118,6 +117,69 @@ import DynamicImage from "../components/helpers/DynamicIcon.astro";
       font-size: 0.98rem;
       line-height: 1.7;
       color: #4b5563;
+    }
+
+    @media (max-width: 1024px) {
+      .carousel-div {
+        grid-column: content-start / full-end;
+      }
+
+      .carousel-header {
+        grid-column: content;
+      }
+
+      .carousel-window {
+        grid-column: content-start / full-end;
+      }
+
+      .carousel-track {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto auto;
+        gap: 1rem;
+      }
+
+      .card {
+        min-height: 200px;
+        padding: 1rem;
+      }
+
+      .card:nth-child(2), .card:nth-child(4) {
+        grid-column: 2 / -1;
+      }
+
+      .card h3 {
+        font-size: 1.2rem;
+      }
+
+      .card p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .carousel-track {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+        gap: 1.5rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+        min-height: 180px;
+      }
+
+      .card:nth-child(2), .card:nth-child(4) {
+        grid-column: auto;
+      }
+
+      .card h3 {
+        font-size: 1.1rem;
+      }
+
+      .card p {
+        font-size: 0.85rem;
+      }
     }
   }
 </style>
