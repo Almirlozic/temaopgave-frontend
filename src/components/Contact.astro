@@ -179,4 +179,65 @@ import ContactHands from "@data/images/Contact-hands.jpg";
     z-index: 1;
     border-radius: 1rem;
   }
+
+  @media (max-width: 1024px) {
+    section {
+      grid-template-columns: 1fr;
+      row-gap: 3rem;
+      column-gap: 0;
+    }
+
+    .column-left {
+      order: 2;
+    }
+
+    .column-right {
+      display: none;
+    }
+
+    .infoWrapper {
+      gap: 1.5rem;
+      padding-top: 1rem;
+    }
+
+    .CallToday,
+    .Clock,
+    .pin {
+      column-gap: 0.75rem;
+    }
+
+    .CallToday :global(img),
+    .Clock :global(img),
+    .pin :global(img) {
+      inline-size: 3rem;
+      block-size: 3rem;
+      padding: 0.7rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .infoWrapper {
+      gap: 1rem;
+      padding-top: 0.5rem;
+    }
+
+    .CallToday :global(img),
+    .Clock :global(img),
+    .pin :global(img) {
+      inline-size: 2.5rem;
+      block-size: 2.5rem;
+      padding: 0.5rem;
+    }
+
+    .ContactWoman::after {
+      width: 150px;
+      height: 80px;
+      bottom: -10px;
+      left: -20px;
+    }
+  }
 </style>
