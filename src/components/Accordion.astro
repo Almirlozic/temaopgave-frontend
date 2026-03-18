@@ -1,0 +1,134 @@
+---
+import faqData from "../data/faq.json"; 
+---
+<section class="faq-section">
+  <div class="faq-heading">
+    <span>FAQ</span>
+    <h2>Customer Questions</h2>
+  </div>
+
+  {faqData.faq.map((item, i) => (
+    <details class="faq-item" key={i}>
+      <summary class="faq-question">
+        <span>{item.question}</span>
+        <span class="toggle-icon" aria-hidden="true">
+          <!-- Plus -->
+          <svg class="plus" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="8" y1="2" x2="8" y2="14"></line>
+            <line x1="2" y1="8" x2="14" y2="8"></line>
+          </svg>
+          <!-- Minus -->
+          <svg class="minus" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="2" y1="8" x2="14" y2="8"></line>
+          </svg>
+        </span>
+      </summary>
+      <div class="faq-answer">
+        {item.answer.split("\n\n").map((p, idx) => <p key={idx}>{p}</p>)}
+      </div>
+    </details>
+  ))}
+</section>
+
+<style>
+  .faq-section {
+  display: grid;
+  grid-column: content;
+  background-color: var(--color-neutrals-50);
+  padding-block: 151px;
+  padding-inline: 236px;
+  margin-bottom: 100px;
+}
+
+.faq-section .faq-heading {
+  text-align: center;
+  padding-block: 30px;
+}
+
+.faq-section .faq-heading h2 {
+  color: var(--color-neutrals-900);
+  font-size: var(--step-2);
+  font-weight: var(--bold-font);
+}
+
+.faq-section .faq-heading span {
+  color: var(--color-neutrals-900);
+  font-size: var(--step--1);
+}
+
+/* FAQ ITEM */
+details {
+  border-bottom: 1px solid #dadada;
+  margin-bottom: 2rem;
+}
+
+/* SUMMARY */
+summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  user-select: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ICON */
+.toggle-icon {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-icon .plus {
+  display: inline;
+}
+
+.toggle-icon .minus {
+  display: none;
+}
+
+details[open] .toggle-icon .plus {
+  display: none;
+}
+
+details[open] .toggle-icon .minus {
+  display: inline;
+}
+
+/* ANSWER */
+.faq-answer {
+  padding: 0.5rem 0;
+  color: #595566;
+  opacity: 0;
+}
+
+/* Sørger for den ALTID bliver synlig når åben */
+details[open] .faq-answer {
+  opacity: 1;
+}
+
+/* Animation kun hvis motion er tilladt */
+@media (prefers-reduced-motion: no-preference) {
+  details[open] .faq-answer {
+    animation: animate 0.8s ease both;
+  }
+}
+
+/* Animation */
+@keyframes animate {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+</style>
