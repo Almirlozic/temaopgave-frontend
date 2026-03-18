@@ -202,4 +202,84 @@ import CEOImage from "@assets/images/ceo.webp";
       z-index: 2;
     }
   }
+
+  @media (max-width: 768px) {
+    .hero-wrapper {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-content {
+      grid-column: full;
+      grid-row: 2;
+      min-height: auto;
+    }
+
+    .hero-content-inner {
+      padding-block: 2rem;
+      text-align: center;
+      justify-self: center;
+      max-width: none;
+    }
+
+    .hero-content-inner h1 {
+      font-size: clamp(2rem, 8vw, 3rem);
+      max-width: none;
+    }
+
+    .hero-content-inner p {
+      font-size: clamp(1rem, 4vw, 1.125rem);
+      max-width: none;
+    }
+
+    .hero-actions {
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .hero-content-inner a {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .CEO-image {
+      grid-column: full;
+      grid-row: 1;
+      height: auto;
+      min-height: 20rem;
+    }
+
+    .background-grid::after {
+      width: min(60vw, 20rem);
+      height: min(40%, 15rem);
+    }
+
+    .services {
+      margin-top: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-content-inner {
+      padding-block: 1rem;
+      gap: 1rem;
+    }
+
+    .hero-content-inner h1 {
+      font-size: 2rem;
+    }
+
+    .hero-content-inner p {
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .CEO-image {
+      min-height: 15rem;
+    }
+  }
 </style>

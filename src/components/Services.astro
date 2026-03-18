@@ -18,5 +18,21 @@ import DynamicImage from "@helpers/DynamicImage.astro";
       margin-top: -5rem;
       z-index: 2;
     }
+
+    @media (max-width: 870px) {
+      .services {
+        margin-top: 2rem;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .services {
+        grid-template-columns: 1fr;
+        margin-top: 2rem;
+        gap: 2rem;
+      }
+    }
   }
 </style>
