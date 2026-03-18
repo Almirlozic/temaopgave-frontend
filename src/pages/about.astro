@@ -6,6 +6,7 @@ import ServiceHeader from "@components/ServiceHeader.astro";
 import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
 import aboutImage from "@data/images/about.jpg";
+import Accordion from "@components/Accordion.astro";
 ---
 
 <Layout>
@@ -55,6 +56,7 @@ import aboutImage from "@data/images/about.jpg";
     backgroundColor="var(--color-neutrals-50)"
     textColor="var(--color-neutrals-900)"
   />
+  <Accordion />
 </Layout>
 
 <style>
