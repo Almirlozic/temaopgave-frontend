@@ -1,0 +1,191 @@
+---
+import Employees from "@data/employees.json";
+import DynamicImage from "@helpers/DynamicImage.astro";
+import ServiceHeader from "@components/ServiceHeader.astro";
+
+const featuredEmployees = Employees.slice(0, 2);
+---
+
+<section class="we-champion">
+  <div class="we-champion__intro">
+    <div class="ServiceHeader">
+      <ServiceHeader
+        eyebrow="Our team"
+        title="We champion the bold"
+        lede="Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction."
+      />
+      <button class="cta-button">Meet the team</button>
+    </div>
+  </div>
+
+  <div class="we-champion__cards">
+    {
+      featuredEmployees.map((employee) => (
+        <article class="team-card">
+          <a
+            class="team-card__link"
+            href={`/${employee.slug}`}
+            aria-label={`Read more about ${employee.name}`}
+          >
+            <div class="team-card__image-wrapper">
+              <DynamicImage
+                imagePath={employee.img}
+                altText={employee.name}
+                class="team-card__image"
+                style={`view-transition-name: img-${employee.slug};`}
+              />
+            </div>
+
+            <div class="team-card__content">
+              <p class="team-card__title">{employee.title}</p>
+              <h3>{employee.name}</h3>
+              <p class="team-card__description">{employee.description}</p>
+            </div>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .we-champion {
+    grid-column: content;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 2rem;
+    align-items: start;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .we-champion__intro {
+    grid-column: 1;
+    min-width: 0;
+  }
+
+  .ServiceHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .we-champion__cards {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    min-width: 0;
+    justify-self: end;
+  }
+
+  .team-card {
+    width: 100%;
+    background: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .team-card__link {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    align-items: stretch;
+    color: inherit;
+    text-decoration: none;
+    min-height: 100%;
+    width: 100%;
+  }
+
+  .team-card__image-wrapper {
+    height: 100%;
+    min-height: 180px;
+  }
+
+  .team-card__image,
+  .team-card__image-wrapper :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .team-card__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    min-width: 0;
+  }
+
+  .team-card__title {
+    width: fit-content;
+    border-radius: 999px;
+    background: #0b1220;
+    color: #fff;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .team-card__description {
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  .cta-button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  @media (max-width: 900px) {
+    .we-champion {
+      grid-template-columns: 1fr;
+    }
+
+    .we-champion__intro,
+    .we-champion__cards {
+      grid-column: 1;
+    }
+
+    .we-champion__cards {
+      justify-self: stretch;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .team-card__link {
+      grid-template-columns: 1fr;
+    }
+
+    .team-card__image-wrapper {
+      min-height: 220px;
+    }
+  }
+</style>
