@@ -128,13 +128,23 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
       }
     }
 
+    @media (max-width: 800px) {
+      header {
+        width: 100%;
+        height: auto;
+      }
+      .case-details dl {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
     header {
       position: relative;
       display: grid;
 
       .case-details {
         position: absolute;
-        bottom: -80px;
+        bottom: -15%;
         left: 50%;
         transform: translateX(-50%);
         background-color: var(--color-neutrals-900);
@@ -143,8 +153,10 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
         padding: 2rem 4rem;
         display: flex;
         align-items: flex-start;
+        flex-wrap: wrap;
         justify-content: space-between;
         gap: 2rem;
+        max-height: fit-content;
         min-width: 90%;
         max-width: 1200px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);

@@ -53,6 +53,8 @@ import ServiceHeader from "./ServiceHeader.astro";
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
 
     .header .text {
@@ -64,7 +66,7 @@ import ServiceHeader from "./ServiceHeader.astro";
     }
     aside {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: var(--card-gap);
     }
 
