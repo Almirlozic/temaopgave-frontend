@@ -20,11 +20,11 @@ import Footer from "@components/Footer.astro";
     ></script>
   </head>
   <body>
-    <Header />
     <main>
+      <Header />
       <slot />
+      <Footer />
     </main>
-    <Footer />
   </body>
 </html>
 
@@ -42,7 +42,12 @@ import Footer from "@components/Footer.astro";
         )
         [content-end]
         1fr [full-end];
-      overflow-x: hidden;
+      /*    overflow-x: hidden; */
+    }
+    @media (max-width: 640px) {
+      body {
+        grid-template-columns: [full-start] 1fr [full-end];
+      }
     }
 
     header,
@@ -52,11 +57,9 @@ import Footer from "@components/Footer.astro";
       display: grid;
       grid-template-columns: subgrid;
       grid-column: full;
-      /* > * + * {
-        margin-top: 2rem;
-      } */
       > :not(&) {
         grid-column: content;
+        padding-inline: 2rem;
       }
     }
   }
