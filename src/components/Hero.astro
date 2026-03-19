@@ -33,11 +33,38 @@ import CEOImage from "@assets/images/ceo.webp";
 <style>
   @layer components {
     /* Hero layout */
+    /* Scroll-driven animation fallback variables */
     .hero {
+      --hero-image-opacity: 1;
+      --hero-image-translate: 0;
+      --hero-content-opacity: 1;
+      --hero-content-translate: 0;
+      --hero-progress-scale: 0;
+    }
+    .hero {
+      --hero-image-opacity: 1;
+      --hero-image-translate: 0;
+      --hero-content-opacity: 1;
+      --hero-content-translate: 0;
+      --hero-progress-scale: 0;
       position: relative;
       display: grid;
       grid-template-columns: subgrid;
       grid-column: full;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: fixed;
+      inset-block-start: 0;
+      inset-inline: 0;
+      block-size: 4px;
+      background: var(--color-surface-highlight);
+      transform-origin: 0 50%;
+      scale: var(--hero-progress-scale) 1;
+      z-index: 30;
+      pointer-events: none;
     }
 
     .hero-wrapper {
@@ -45,6 +72,9 @@ import CEOImage from "@assets/images/ceo.webp";
       display: grid;
       grid-template-columns: subgrid;
       min-height: clamp(32rem, 70vh, 48rem);
+      opacity: var(--hero-image-opacity);
+      translate: 0 var(--hero-image-translate);
+      will-change: transform, opacity;
     }
 
     /* Hero content */
@@ -67,6 +97,8 @@ import CEOImage from "@assets/images/ceo.webp";
       gap: 1.5rem;
       position: relative;
       z-index: 1;
+      opacity: var(--hero-content-opacity);
+      translate: 0 var(--hero-content-translate);
     }
 
     .hero-content-inner h1 {
@@ -195,6 +227,70 @@ import CEOImage from "@assets/images/ceo.webp";
       );
     }
 
+    @supports (animation-timeline: scroll()) {
+      .hero {
+        --hero-progress-scale: 0;
+      }
+
+      .hero::before {
+        animation: hero-progress linear both;
+        animation-timeline: scroll();
+        animation-range: 0 100svh;
+      }
+
+      .hero-content-inner {
+        animation: hero-copy-fade linear both;
+        animation-timeline: scroll();
+        animation-range: 0 90svh;
+      }
+
+      .hero-wrapper {
+        animation: hero-image-parallax linear both;
+        animation-timeline: scroll();
+        animation-range: 0 100svh;
+      }
+    }
+
+    /* @supports not (animation-timeline: scroll()) {
+      .hero::before {
+        display: none;
+      }
+    } */
+
+    @keyframes hero-image-parallax {
+      from {
+        opacity: 1;
+        translate: 0 0;
+      }
+
+      to {
+        opacity: 0.2;
+        translate: 0 18svh;
+      }
+    }
+
+    @keyframes hero-copy-fade {
+      from {
+        opacity: 1;
+        translate: 0 0;
+      }
+
+      to {
+        opacity: 0;
+        translate: 0 8svh;
+      }
+    }
+
+    @keyframes hero-progress {
+      from {
+        scale: 0 1;
+      }
+
+      to {
+        scale: 1 1;
+      }
+    }
+
     /* Services overlap */
     .services {
       position: relative;
@@ -248,6 +344,7 @@ import CEOImage from "@assets/images/ceo.webp";
       grid-row: 1;
       height: auto;
       min-height: 20rem;
+      overflow: clip;
     }
 
     .background-grid::after {
