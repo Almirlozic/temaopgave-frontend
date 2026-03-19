@@ -5,15 +5,67 @@ import Hero from "@components/Hero.astro";
 import Carrousel from "@components/Carrousel.astro";
 import Contact from "@components/Contact.astro";
 import CoreValues from "@components/coreValues.astro";
+import Experience from "@components/Experience.astro";
+import ServiceHeader from "@components/ServiceHeader.astro";
 ---
 
 <Layout>
   <Hero />
   <WhatToExpect />
   <Carrousel />
+  <section class="experience">
+    <div class="grid">
+      <div class="service">
+        <ServiceHeader
+          eyebrow="Experience"
+          title="More than 25 years of experience"
+          lede="3000+ our clients are insured around the World"
+        />
+      </div>
+      <div class="">
+        <Experience />
+      </div>
+    </div>
+  </section>
   <CoreValues
     backgroundColor="var(--color-neutrals-900)"
     textColor="var(--color-neutrals-50)"
   />
   <Contact />
 </Layout>
+
+<style>
+  .experience {
+    grid-column: full;
+    display: grid;
+    grid-template-columns: inherit;
+    padding-block: 50px;
+    background-color: var(--color-yellow-600);
+  }
+
+  .experience .grid {
+    grid-column: content;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .service {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .experience .grid > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+  }
+
+  @media (max-width: 768px) {
+    .experience .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
