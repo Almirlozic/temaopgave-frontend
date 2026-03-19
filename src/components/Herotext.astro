@@ -16,8 +16,8 @@ const { eyebrow, title, text } = Astro.props;
     grid-column: full;
     background-color: var(--color-neutrals-50);
     div {
-      --p-inline: 360px;
-      --p-block: 100px;
+      --p-inline: clamp(1.25rem, 6vw, 22.5rem);
+      --p-block: clamp(3rem, 8vw, 6.25rem);
       text-align: center;
       padding-inline: var(--p-inline);
       padding-block: var(--p-block);
@@ -25,27 +25,36 @@ const { eyebrow, title, text } = Astro.props;
         padding-block: var(--space, 0.5rem);
       }
       span {
-        font-size: var(--step--2);
+        font-size: clamp(0.85rem, 1vw, var(--step--2));
         color: var(--color-neutrals-900);
+        display: block;
       }
       h1 {
-        font-size: var(--step-4);
+        font-size: clamp(2rem, 6vw, var(--step-4));
+        line-height: 1.05;
+        text-wrap: balance;
         font-weight: var(--bold-font);
         position: relative;
+        display: inline-block;
+        padding-bottom: 0.2em;
+
         &::after {
           content: "";
           position: absolute;
-          right: 24%;
-          top: 80%;
-          width: 100vw;
+          left: calc(-50vw + 50%);
+          right: 0;
+          bottom: 0;
           height: 7px;
           background: var(--color-yellow-500);
-          background-clip: content-box;
+          border-radius: 999px;
         }
       }
       p {
         font-size: var(--step--1);
-        padding-inline: 100px;
+        padding-inline: clamp(1rem, 4vw, 6.25rem);
+        max-width: 65ch;
+        margin-inline: auto;
+        text-wrap: pretty;
       }
     }
   }
